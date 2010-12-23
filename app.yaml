@@ -1,0 +1,25 @@
+application: urlstack
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /weblink.*
+  script: weblink.py
+  
+- url: /category.*
+  script: category.py
+  
+- url: /dir
+  static_dir: dir
+  
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+
+- url: /j
+  static_files: dir/js/bookmarklet.js
+  upload: dir/js/bookmarklet.js
+  
+- url: /.*
+  script: main.py

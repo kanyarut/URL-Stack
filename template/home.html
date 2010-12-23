@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en-us">
+<head> 
+
+<meta charset="utf-8"> 
+<title>URL Stack</title> 
+
+<link rel="stylesheet" href="/dir/css/style.css" type="text/css" media="screen" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="/dir/js/quicksearch.js"></script> 
+<link media="screen" rel="stylesheet" href="/dir/colorbox/colorbox.css" />
+<script src="/dir/colorbox/jquery.colorbox.js"></script>
+<script type="text/javascript" src="/dir/js/script.js"></script> 
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+</head> 
+<body> 
+<header id="header">
+<h1><a href="/">URL Stack</a></h1>
+<div class="fl_right">Drag this to Bookmark &rarr; <a href="javascript:var%20s%20=%20document.createElement('script');s.type='text/javascript';document.body.appendChild(s);s.src='http://urlstack.appspot.com/j';void(0);" id="bookmark">URL Stack</a></div></header>
+<aside id="side">
+	<h2>Categories</h2>
+	<nav id="category">Loading...</nav>
+</aside>
+<div id="content">
+<div id="searchbar">
+<form method="post" action="/weblink/search" id="search">
+<input id="searchbox" name="q" value="{{ q }}" placeholder="Search" class="text" />
+<input type="submit" name="submit" value="Search All" class="button" />
+</form>
+</div>
+<div id="linkslist"></div>
+</div>
+<footer id="footer">&copy; 2010 by nice
+<div class="fl_right">Logged in as {{ user.nickname }} - <a href="{{ url }}">Logout</a></div>
+</footer>
+</body> 
+</html>

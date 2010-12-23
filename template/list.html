@@ -1,0 +1,11 @@
+{% for bean in beans %}
+	<article>
+	<h4><a href="/weblink/read?k={{ bean.key }}" class="read"><img src="/dir/img/icon-book.png" alt="Read" /> {{ bean.title }}</a></h4>
+	<em>{{ bean.tags }}</em> <a href="{{ bean.url }}" class="external">{{ bean.url }}</a>
+	 <a href="/weblink/delete?k={{ bean.key }}" class="delete"><img src="/dir/img/mini-trash.png" alt="Read" /></a>
+	</article>
+{% endfor %}
+<script type="text/javascript">
+$('input#searchbox').quicksearch('div#linkslist article');
+$('a.read').colorbox({width:"90%", height:"90%", iframe:true, speed: 200});
+</script>

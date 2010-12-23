@@ -1,0 +1,73 @@
+<html>
+<head>
+<style type="text/css">
+body{
+	font: .8em/1.5em "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background: #FFF;
+	color: #3f91ce;
+	padding: 5px;
+	margin: 0;
+}
+a{
+	color: #3f91ce;
+}
+form{
+}
+label{
+	padding: 5px 0 0 0;
+	width: 100%;
+	font-weight: bold;
+	display: block;
+}
+input{
+	border: 1px solid #6095CC;
+	color: #5280B1;
+	padding: 3px;
+	width: 100%;
+	border-radius: 5px;
+}
+select{
+	color: #5280B1;
+	width: 100%;
+}
+input.button{
+	width: 100px;
+	float: right;
+	background: #3f91ce;
+	color: #FFF;
+	cursor: pointer;
+	border: 1px solid #6FABEA;
+	margin: 5px 0 0 0;
+}
+input.button:hover{
+	color: #000;
+	background: #6095CC;
+}
+small{
+	font-size: .7em;
+}
+</style>
+</head>
+<body>
+<form action="/weblink/add" method="post">
+    <div>
+    	<label>URL: </label>
+    	<input type="text" id="url" name="url" value="{{ rel }}" />
+    </div>
+	<div>
+		<label>Category: </label>
+		<select name="category">
+		    {% for category in categories %}
+			<option value='{{ category.key }}'>{{ category.name }}</option></li>
+			{% endfor %}
+		</select>
+	</div>
+	<div>
+    	<label>Notes: </label>
+    	<input type="text" id="tags" name="tags" value="" />
+    </div>
+    <div>
+    <small>Account: {{ user.nickname }}</small><input type="submit" value="add" class="button"></div>
+</form>
+</body>
+</html>

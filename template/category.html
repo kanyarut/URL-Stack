@@ -1,0 +1,11 @@
+<ul id="categorylist">
+{% for bean in beans %}
+	<li><a href="/weblink?c={{ bean.key }}">{{ bean.name }}</a></li>
+{% endfor %}
+	<li><a href="/weblink">Show all</a></li>
+</ul>
+
+<form action="/category/add" method="post" id="addcategory">
+    <input type="text" name="name" class="text" size="15" />
+    <input type="submit" value="add" class="button" />
+</form>
