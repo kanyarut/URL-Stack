@@ -22,8 +22,8 @@ h5{ font-size: 1.2em;}
 p{ padding: 0 0 10px 0; }
 a{ text-decoration: none;color: #3f91ce; }
 a:hover{ text-decoration: underline; }
-input.text{border: 1px solid #CCC; padding: 2px;margin: 0; border-radius: 3px;line-height: 16px;font-size: 12px;}
-input.button{border: 1px solid #666; background: #999; padding: 2px 5px;margin: 0; border-radius: 3px; color: #FFF;line-height: 16px;font-size: 12px; cursor: pointer;}
+input.text{border: 1px solid #CCC; padding: 2px;margin: 0; border-radius: 3px;-moz-border-radius: 3px;line-height: 16px;font-size: 12px;}
+input.button{border: 1px solid #666; background: #999; padding: 2px 5px;margin: 0; border-radius: 3px;-moz-border-radius: 3px; color: #FFF;line-height: 16px;font-size: 12px; cursor: pointer;}
 input.button:hover{ background: #CCC; color: #000;}
 ul{ margin: 0 0 10px 0 }
 li{ margin:0 0 0 25px;  list-style: disc;  }
