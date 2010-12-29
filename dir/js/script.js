@@ -29,6 +29,8 @@ $(document).ready(function() {
 	
 	$('#categorylist li a').live('click',function(e){
 		e.preventDefault();
+		$('#categorylist li a').removeClass('active');
+		$(this).addClass('active');
 		$.ajax({
 		  url: $(this).attr('href'),
 		  success: function(data) {

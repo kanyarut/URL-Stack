@@ -135,8 +135,65 @@ class Read(webapp.RequestHandler):
             self.response.out.write(template.render(path, template_values))
         else:
             self.redirect(users.create_login_url(self.request.uri))
+
+class Edit(webapp.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            k = db.Key(self.request.get('k'))
+            q = db.GqlQuery("SELECT * FROM Weblink WHERE account = :1 AND __key__ = :2", user,k)
+            results = q.fetch(1)
+            if(results[0].content == None):
+                p = parse.Parse(results[0].url)
+                results[0].content = p.getContent()
+                results[0].save()
+            
+            categories = db.GqlQuery("SELECT * FROM Category WHERE account = :1 ORDER BY name asc", user)
+            
+            cate = []
+
+            for category in categories:
+                if(str(category.key()) == str(results[0].category)):
+                    category.isselect=True
+                else:
+                    category.isselect=False
+                cate.append(category)
+
+            template_values = {
+            	'categories': cate,
+            	'bean':results[0],
+            }
+            path = os.path.join(os.path.dirname(__file__), 'template/edit.html')
+            self.response.out.write(template.render(path, template_values))
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+            
+    def post(self):
+        user = users.get_current_user()
+        if user:
+            k = db.Key(self.request.get('key'))
+            q = db.GqlQuery("SELECT * FROM Weblink WHERE account = :1 AND __key__ = :2", user,k)
+            results = q.fetch(1)
+            results[0].category = self.request.get('category')
+            results[0].tags = self.request.get('tags')
+            results[0].url = self.request.get('url')
+            results[0].save()
+            
+            template_values = {
+                'message': 'Done Editing',
+            }
+            path = os.path.join(os.path.dirname(__file__), 'template/done.html')
+            self.response.out.write(template.render(path, template_values))
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
     
-application = webapp.WSGIApplication([('/weblink', List),('/weblink/add', Add),('/weblink/search', Search),('/weblink/delete', Delete),('/weblink/read', Read)],debug=True)
+application = webapp.WSGIApplication([  ('/weblink', List),
+										('/weblink/add', Add),
+										('/weblink/search', Search),
+										('/weblink/delete', Delete),
+										('/weblink/read', Read),
+										('/weblink/edit', Edit)
+										],debug=True)
 
 def main():
     run_wsgi_app(application)

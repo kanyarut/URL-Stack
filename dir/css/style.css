@@ -19,7 +19,7 @@ h2{ font-size: 1.6em;}
 h3{ font-size: 1.5em;}
 h4{ font-size: 1.4em;}
 h5{ font-size: 1.2em;}
-p{ padding: 0 0 10px 0; }
+p{ padding: 0 0 10px 0; overflow: hidden;}
 a{ text-decoration: none;color: #3f91ce; }
 a:hover{ text-decoration: underline; }
 input.text{border: 1px solid #CCC; padding: 2px;margin: 0; border-radius: 3px;-moz-border-radius: 3px;line-height: 16px;font-size: 12px;}
@@ -122,12 +122,13 @@ a#bookmark{
 }
 #categorylist a{
 	display: block;
-	padding: 5px 0;
+	padding: 5px 0 5px 20px;
 	border-bottom: 1px dashed #999;
 	color: #444;
+	background: transparent url(/dir/img/icon_category.png) no-repeat left center;
 }
-#categorylist a:hover{
-	background: #CCC;
+#categorylist a:hover, #categorylist a.active{
+	background-color: #CCC;
 	text-decoration: none;
 }
 #content article{
@@ -150,13 +151,33 @@ a#bookmark{
 a.read{
 	color: inherit;
 }
-a.delete{
+.meta{
 	float: right;
+}
+a.delete{
 	color: #FF9B0A;
 }
 a.external{
 	background: transparent url(/dir/img/external_link_icon.gif) no-repeat right center;
 	padding: 0 18px 0 0;
+}
+.form{
+	display: block;
+	width: 90%;
+	margin: 10px auto;
+}
+.form label{
+	width: 30%;
+	display: block;
+	float: left;
+}
+.form input, .form select{
+	width: 70%;
+	float: left;
+}
+.form .button{
+	width: auto;
+	float: right;
 }
 /******REUSABLE LAYOUT*******/
 .fl_left{ float: left; }

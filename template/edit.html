@@ -1,0 +1,27 @@
+<html>
+<head>
+<link rel="stylesheet" href="/dir/css/style.css" type="text/css" media="screen" />
+</head>
+<body>
+<form action="/weblink/edit" method="post" class="form">
+    <p>
+    	<label>URL: </label>
+    	<input type="text" id="url" name="url" value="{{ bean.url }}" class="text" />
+    </p>
+	<p>
+		<label>Category:</label>
+		<select name="category">
+		    {% for c in categories %}
+			<option value='{{ c.key }}'  {% if c.isselect %}selected="selected" {% endif %}>{{ c.name }}</option></li>
+			{% endfor %}
+		</select>
+	</p>
+	<p>
+    	<label>Notes: </label>
+    	<input type="hidden" name="key" value="{{ bean.key }}" />
+    	<input type="text" id="tags" name="tags" value="{{ bean.tags }}" class="text" />
+    </p>
+    <p><input type="submit" value="Edit" class="button"></p>
+</form>
+</body>
+</html>
