@@ -124,15 +124,49 @@ class Read(webapp.RequestHandler):
             if(results[0].content == None):
                 p = parse.Parse(results[0].url)
                 results[0].content = p.getContent()
-                results[0].save()
+            
+            if(results[0].read == None):
+                results[0].read = 0
                 
             template_values = {
+                'hit': results[0].hit,
+                'read': results[0].read,
                 'title': results[0].title,
                 'url': results[0].url,
+                'key': k,
                 'content': results[0].content,
             }
             path = os.path.join(os.path.dirname(__file__), 'template/read.html')
             self.response.out.write(template.render(path, template_values))
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+            
+    def post(self):
+        user = users.get_current_user()
+        if user:
+            k = db.Key(self.request.get('key'))
+            p = self.request.get('percent')
+            q = db.GqlQuery("SELECT * FROM Weblink WHERE account = :1 AND __key__ = :2", user,k)
+            results = q.fetch(1)
+            results[0].read = int(p)
+            results[0].save()
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+            
+class Visit(webapp.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        if user:
+            k = db.Key(self.request.get('k'))
+            q = db.GqlQuery("SELECT * FROM Weblink WHERE account = :1 AND __key__ = :2", user,k)
+            results = q.fetch(1)
+            
+            if(results[0].hit == None):
+                results[0].hit = 0
+            results[0].hit = results[0].hit+1
+            results[0].save()
+            
+            self.redirect(results[0].url)
         else:
             self.redirect(users.create_login_url(self.request.uri))
 
@@ -192,7 +226,8 @@ application = webapp.WSGIApplication([  ('/weblink', List),
 										('/weblink/search', Search),
 										('/weblink/delete', Delete),
 										('/weblink/read', Read),
-										('/weblink/edit', Edit)
+										('/weblink/edit', Edit),
+										('/weblink/visit', Visit)
 										],debug=True)
 
 def main():

@@ -179,6 +179,74 @@ a.external{
 	width: auto;
 	float: right;
 }
+.showhit,.showread{
+	display: block;
+	float: left;
+}
+
+.counter {
+	display: inline-block;
+	font: 700 9px "lucida grande", arial, sans-serif;
+	color: #fff;
+	text-decoration: none;
+	line-height: 14px;
+	height: 14px;
+	padding: 0 3px;
+	margin: 0 0 0 4px;
+	width: 50px;
+	overflow: hidden;
+}
+
+.counter:active {
+	position: relative;
+}
+
+.counter:active{
+	top: 1px;
+}
+
+.counter {
+	background:
+		-webkit-gradient(
+		    linear,
+		    0 0, 0 100%,
+		    from(#b0d4e7),
+		    to(#739eb7)
+		);
+	background:
+		-moz-linear-gradient(
+			#b0d4e7,
+			#739eb7
+		  );
+	text-shadow: 0 1px 0 rgba(0,0,0,.3);
+	text-align: center;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-box-shadow:
+		inset 0 1px 1px rgba(0,0,0,.2),
+		inset 0 1px 2px rgba(0,0,0,.3),
+		0 1px 0 #fff;
+	-moz-box-shadow: 
+		inset 0 1px 1px rgba(0,0,0,.2),
+		inset 0 1px 2px rgba(0,0,0,.3),
+		0 1px 0 #fff;
+}
+
+.counter:hover {
+	background:
+		-webkit-gradient(
+		    linear,
+		    0 0,
+		    0 100%,
+    		from(#b6dbef),
+    		to(#7daec9)
+		);
+	background:
+		-moz-linear-gradient(
+    		#b6dbef,
+    		#7daec9
+		);
+}
 /******REUSABLE LAYOUT*******/
 .fl_left{ float: left; }
 .fl_right{ float: right; }

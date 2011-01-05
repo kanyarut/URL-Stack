@@ -24,7 +24,7 @@ i.addEventListener("load", function(event) {
 */
 d = document.createElement('div');
 d.setAttribute('id', 'laterWrapper');
-d.setAttribute('style', 'font: 12px/16px "Lucida Sans Unicode", "Lucida Grande", sans-serif;position:fixed; z-index: 100;left:3px;top:3px; border-radius:5px;-moz-border-radius:5px;background: #3f91ce;width:auto;height:auto;overflow:hidden;padding:5px;-webkit-box-shadow: 2px 2px 4px #888;-moz-box-shadow: 2px 2px 4px #888;box-shadow: 2px 2px 4px #888;');
+d.setAttribute('style', 'font: 12px/16px "Lucida Sans Unicode", "Lucida Grande", sans-serif;position:fixed; z-index: 100;left:3px;top:3px; border-radius:5px;-moz-border-radius:5px;background: #3f91ce url(http://urlstack.appspot.com/dir/img/bluebg.gif);width:auto;height:auto;overflow:hidden;padding:5px;-webkit-box-shadow: 2px 2px 4px #888;-moz-box-shadow: 2px 2px 4px #888;box-shadow: 2px 2px 4px #888;');
 d.appendChild(h);
 d.appendChild(a);
 d.appendChild(i);

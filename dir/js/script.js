@@ -67,6 +67,18 @@ $(document).ready(function() {
 	});
 });
 
+function saveProgress(key,percent,oldp){
+	if(oldp < percent){
+		$.ajax({
+		  url: '/weblink/read',
+		  type: "POST",
+		  data: 'key='+key+'&percent='+percent,
+		  success: function(data) {
+		   //$('#linkslist').html(data);
+		  }
+		});
+	}
+}
 // when all page elements loaded
 $(window).load(function() {
 
