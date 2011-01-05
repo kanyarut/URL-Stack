@@ -7,7 +7,7 @@
 <p><span class="showhit counter">{{ hit }} hit</span> <span class="showread counter">{{ read }}% read</span></p>
 <h1><a href='/weblink/visit?k={{ key }}' class="external" target="_parent">{{ title }}</a></h1>
 
-<div>{{ content }}</div>
+<div class="readcontent">{{ content }}</div>
 <script type="text/javascript">
 $(document).bind('scroll', function(ev){ 
 	var bottom = $(window).height() + $(window).scrollTop(); 

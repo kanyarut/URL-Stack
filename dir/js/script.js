@@ -67,7 +67,7 @@ $(document).ready(function() {
 	});
 });
 
-function saveProgress(key,percent,oldp){
+function saveReadingProgress(key,percent,oldp){
 	if(oldp < percent){
 		$.ajax({
 		  url: '/weblink/read',

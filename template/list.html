@@ -13,9 +13,24 @@
 	</article>
 {% endfor %}
 <script type="text/javascript">
-var key,percent,oldp;
+var key,percent,oldp,timer,savedp=0;
 $('input#searchbox').quicksearch('div#linkslist article');
-$('a.read').colorbox({width:"90%", height:"90%", iframe:true, speed: 200, onClosed:function(){ saveProgress(key,percent,oldp) }});
+$('a.read').colorbox({width:"90%", height:"90%", iframe:true, speed: 200,
+onComplete:function(){
+ 	timer = setTimeout("saveProgress()",3000);
+}, onClosed:function(){ 
+	saveProgress();
+	clearTimeout(timer);
+}});
+
+function saveProgress(){
+	if(savedp < percent){
+		saveReadingProgress(key,percent,oldp);
+		savedp = percent;
+	}
+	setTimeout("saveProgress()",3000);
+}
+
 
 function childScrollHandler(k,p,o){
 	key = k;
