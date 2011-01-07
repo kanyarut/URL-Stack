@@ -63,7 +63,16 @@ $(document).ready(function() {
 				$('#category').html(msg);
 			}
 		});
+		$(this).find('input').val('');
+		$.colorbox.close();
 		return false;
+	});
+	
+	$('#do_addcategory').live('click',function(){
+		$.colorbox({
+			onOpen:function(){$('#addcategory_wrapper').show();},
+			onClosed:function(){$('#addcategory_wrapper').hide();},
+			inline:true,href:"#addcategory_wrapper",initialWidth:20,initialHeight:20});
 	});
 });
 

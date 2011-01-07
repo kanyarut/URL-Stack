@@ -25,11 +25,12 @@ class Parse():
         return hn.grabContent(self.url,self.html).decode('ascii','ignore')
         
     def getKeyword(self):
-        comments = self.soup.findAll(text=lambda text:isinstance(text, Comment))
+        soup = BeautifulSoup(self.getContent())
+        comments = soup.findAll(text=lambda text:isinstance(text, Comment))
         [comment.extract() for comment in comments]
  
         rmlist = [ 'script', 'style', 'img' ]
-        for tag in self.soup.findAll():
+        for tag in soup.findAll():
             if tag.name.lower() in rmlist:
                 tag.extract()
  

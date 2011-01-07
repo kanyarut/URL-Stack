@@ -1,11 +1,16 @@
 <ul id="categorylist">
-	<li><a href="/weblink" class="active">Show all</a></li>
+	<li><a href="/weblink" class="active allcalte">Show all</a></li>
+	<li><a href="/weblink?r=1" class="readinglist">Reading List</a></li>
 {% for bean in beans %}
 	<li><a href="/weblink?c={{ bean.key }}">{{ bean.name }}</a></li>
 {% endfor %}
 </ul>
+<button id="do_addcategory" type="button"><img src="/dir/img/folder_classic_add.png" alt="folder_classic_add" width="16" height="16" /></button>
 
+<div id="addcategory_wrapper">
 <form action="/category/add" method="post" id="addcategory">
+	<h4><img src="/dir/img/folder_classic_add.png" alt="folder_classic_add" width="16" height="16" /> Add Category</h4>
     <input type="text" name="name" class="text" size="15" />
     <input type="submit" value="add" class="button" />
 </form>
+</div>

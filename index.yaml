@@ -38,6 +38,13 @@ indexes:
 - kind: Weblink
   properties:
   - name: account
+  - name: readlater
+  - name: since
+    direction: desc
+
+- kind: Weblink
+  properties:
+  - name: account
   - name: since
     direction: desc
 

@@ -1,4 +1,3 @@
-@import "reset.css";
 /****** COLOR & SIZE DEFINE *******
 
 ***********************************/
@@ -47,6 +46,7 @@ body{
 }
 #header{
 	height: 20px;
+	font-size: .9em;
 	background: #000;
 	color: #4098D8;
 	position: absolute;
@@ -56,8 +56,8 @@ body{
 	padding:5px 10px;
 }
 #header h1{
-	font-size: 1.1em;
-	line-height: 1.1em;
+	font-size: 1.3em;
+	line-height: 1.3em;
 	float: left;
 }
 #header h1 a{
@@ -110,6 +110,15 @@ a#bookmark{
 #bookmark:hover{
 	text-decoration: none;
 }
+#addcategory_wrapper{
+	display: none;
+	padding: 0 10px 10px;
+	width: 180px;
+}
+#do_addcategory{
+	float: right;
+	cursor: pointer;
+}
 #categorylist{
 	border-top: 1px dashed #999;
 	margin: 0 0 5px 0;
@@ -123,16 +132,35 @@ a#bookmark{
 #categorylist a{
 	display: block;
 	font-size: .9em;
+	line-height: 1.1em;
 	padding: 5px 0 5px 20px;
 	border-bottom: 1px dashed #999;
 	color: #444;
-	background: transparent url(/dir/img/icon_category.png) no-repeat left center;
+	background: transparent url(/dir/img/folder_classic.png) no-repeat left center;
 }
-#categorylist a:hover, #categorylist a.active{
+#categorylist a.readinglist{
+	background: transparent url(/dir/img/folder_classic_type_document.png) no-repeat left center;
+}
+#categorylist a.allcalte{
+	background: transparent url(/dir/img/folder_modernist.png) no-repeat left center;
+}
+#categorylist a:hover{
 	background-color: #CCC;
 	text-decoration: none;
 }
+#categorylist a.active{
+	background: #CCC url(/dir/img/folder_classic_opened.png) no-repeat left center;
+}
+
+#categorylist a.allcalte.active{
+	background: #CCC url(/dir/img/folder_modernist_opened.png) no-repeat left center;
+}
+
+#categorylist a.readinglist.active{
+	background: #CCC url(/dir/img/folder_classic_opened_stuffed.png) no-repeat left center;
+}
 #content article{
+	clear: both;
 	border-bottom: 1px dotted #999;
 	padding:5px 10px 10px 10px;
 	margin: 10px;
@@ -140,11 +168,9 @@ a#bookmark{
 #content article:hover{
 	background: #F1F1F1;
 }
-#searchbar{
-	text-align: right;
-	padding: 10px;
-	background: #EEE;
-	margin: 0 0 10px 0;
+.searchbar{
+	float: right;
+	padding: 10px 0;
 }
 #searchbox{
 	width: 200px;
@@ -184,7 +210,9 @@ a.external{
 	display: block;
 	float: left;
 }
-
+.showdate{
+	display: none;
+}
 .counter {
 	display: inline-block;
 	font: 700 9px "lucida grande", arial, sans-serif;
@@ -254,6 +282,53 @@ a.external{
 	font-size: 1.1em;
 	color: #444;
 	line-height: 1.5em;
+}
+.sortbar{
+	margin: 0 10px 10px;
+	overflow: hidden;
+	border-bottom: 1px solid #CCC;
+}
+.sortlink{
+	padding: 10px 0 0 0;
+	float: left;
+}
+.sortlink li{
+	list-style: none;
+	margin: 0 0 0 4px;
+	padding: 3px 10px;
+	float: left;
+	height: 16px;
+	font-size: 12px;
+	line-height: 16px;
+	border: 1px solid #EEE;
+}
+.sortlink li button{
+	cursor: pointer;
+	vertical-align: middle;
+}
+button.arrowdown{
+	height: 16px;
+	width: 16px;
+	background: transparent url(/dir/img/arrow_state_grey_expanded.png) no-repeat top center;
+}
+button.arrowdown:hover,button.arrowdown.active{
+	background: transparent url(/dir/img/arrow_state_blue_expanded.png) no-repeat top center;
+}
+button.arrowup{
+	height: 16px;
+	width: 16px;
+	background: transparent url(/dir/img/arrow_state_grey_collapsed.png) no-repeat top center;
+}
+button.arrowup:hover,button.arrowup.active{
+	background: transparent url(/dir/img/arrow_state_blue_collapsed.png) no-repeat top center;
+}
+label.checkbox{
+	float: left;
+	width: auto;
+	font-weight: normal;
+}
+input.checkbox{
+	width: auto;
 }
 /******REUSABLE LAYOUT*******/
 .fl_left{ float: left; }

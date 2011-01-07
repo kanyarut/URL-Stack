@@ -9,11 +9,19 @@
 
 <div class="readcontent">{{ content }}</div>
 <script type="text/javascript">
-$(document).bind('scroll', function(ev){ 
-	var bottom = $(window).height() + $(window).scrollTop(); 
-	var height = $(document).height(); 
-	var percentage = Math.round(100*bottom/height); 
-	parent.childScrollHandler('{{ key }}',percentage,{{ read }}); 
+
+$(document).ready(function(){
+	if($(document).height() <= $(window).height()){
+		parent.childScrollHandler('{{ key }}',100,{{ read }}); 
+	}else{
+		parent.childScrollHandler('{{ key }}',1,{{ read }}); 
+		$(document).bind('scroll', function(ev){ 
+			var bottom = $(window).height() + $(window).scrollTop(); 
+			var height = $(document).height();
+			var percentage = Math.round(100*bottom/height); 
+			parent.childScrollHandler('{{ key }}',percentage,{{ read }}); 
+		});
+	}
 });
 </script>
 </body>

@@ -21,7 +21,9 @@
     	<input type="hidden" name="key" value="{{ bean.key }}" />
     	<input type="text" id="tags" name="tags" value="{{ bean.tags }}" class="text" />
     </p>
-    <p><input type="submit" value="Edit" class="button"></p>
+    <p>
+    <label class="checkbox"><input type="checkbox" name="readlater" value="1" class="checkbox" {% if bean.readlater %} checked="checked" {% endif %} /> Read Later</label>
+    <input type="submit" value="Edit" class="button"></p>
 </form>
 </body>
 </html>

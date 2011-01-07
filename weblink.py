@@ -19,6 +19,9 @@ class List(webapp.RequestHandler):
             
             if self.request.get('c'):
             	beans.filter("category =", self.request.get('c'))
+            	
+            if self.request.get('r'):
+                beans.filter("readlater =", int(self.request.get('r')))
             
             beans.order('-since')
             
@@ -65,6 +68,8 @@ class Add(webapp.RequestHandler):
                     bean.account = user
                     bean.category = self.request.get('category')
                     bean.tags = self.request.get('tags')
+                    if(self.request.get('readlater')):
+                        bean.readlater = int(self.request.get('readlater'))
                     bean.url = url
                     p = parse.Parse(url)
                     bean.title = p.getTitle()
@@ -210,7 +215,12 @@ class Edit(webapp.RequestHandler):
             results = q.fetch(1)
             results[0].category = self.request.get('category')
             results[0].tags = self.request.get('tags')
-            results[0].url = self.request.get('url')
+            results[0].url = self.request.get('url')            
+            if(self.request.get('readlater')):
+                results[0].readlater = int(self.request.get('readlater'))
+            else:
+                results[0].readlater = 0
+            
             results[0].save()
             
             template_values = {

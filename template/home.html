@@ -5,9 +5,11 @@
 <meta charset="utf-8"> 
 <title>URL Stack</title> 
 
+<link rel="stylesheet" href="/dir/css/reset.css" type="text/css" media="screen" />
 <link rel="stylesheet" href="/dir/css/style.css" type="text/css" media="screen" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script type="text/javascript" src="/dir/js/quicksearch.js"></script> 
+<script type="text/javascript" src="/dir/js/jquery.tinysort.min.js"></script> 
 <link media="screen" rel="stylesheet" href="/dir/colorbox/colorbox.css" />
 <script src="/dir/colorbox/jquery.colorbox.js"></script>
 <script type="text/javascript" src="/dir/js/script.js"></script> 
@@ -26,12 +28,6 @@
 	<nav id="category">Loading...</nav>
 </aside>
 <div id="content">
-<div id="searchbar">
-<form method="post" action="/weblink/search" id="search">
-<input id="searchbox" name="q" value="{{ q }}" placeholder="Search" class="text" />
-<input type="submit" name="submit" value="Search All" class="button" />
-</form>
-</div>
 <div id="linkslist"></div>
 </div>
 <footer id="footer">&copy; 2010 by nice

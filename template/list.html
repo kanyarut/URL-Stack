@@ -1,12 +1,33 @@
+<div class="sortbar">
+	<div class="searchbar">
+	<form method="post" action="/weblink/search" id="search">
+		<input id="searchbox" name="q" value="{{ q }}" placeholder="Search" class="text" />
+		<input type="submit" name="submit" value="Search All" class="button" />
+	</form>
+	</div>
+	<ul  class="sortlink">
+		<li>Read <button type="button" rel="showread" class="arrowup" /> <button type="button" rel="showread" class="arrowdown" /></li>
+		<li>Hit <button type="button" rel="showhit" class="arrowup" /> <button type="button" rel="showhit" class="arrowdown" /></li>
+		<li>Added <button type="button" rel="showdate" class="arrowup" /> <button type="button" rel="showdate" class="arrowdown active" /></li>
+	</ul>
+</div>
 {% for bean in beans %}
 	<article>
 	<div class="meta">
 	 <a href="/weblink/edit?k={{ bean.key }}" class="edit"><img src="/dir/img/edit.gif" alt="Edit" /></a>
 	 <a href="/weblink/delete?k={{ bean.key }}" class="delete"><img src="/dir/img/mini-trash.png" alt="Read" /></a>
 	</div>
-	<h4><a href="/weblink/read?k={{ bean.key }}" class="read"><img src="/dir/img/icon-book.png" alt="Read" /> {{ bean.title }}</a></h4>
-	<a href="/weblink/visit?k={{ bean.key }}" class="external">{{ bean.url }}</a> <em>{{ bean.tags }}</em>
+	<h4><a href="/weblink/read?k={{ bean.key }}" class="read">
 	
+	{% if bean.read %}
+	<img src="/dir/img/icon-book.png" alt="Read" />
+	{% else %}
+	<img src="/dir/img/book.png" alt="Read" />
+	{% endif %}
+	
+	{{ bean.title }}</a></h4>
+	<a href="/weblink/visit?k={{ bean.key }}" class="external">{{ bean.url }}</a> <em>{{ bean.tags }}</em>
+	<div class="showdate">{{ bean.since }}</div>
 	<div class="meta">
 	<span class="showhit counter">{{ bean.hit }} hit</span> <span class="showread counter">{{ bean.read }}% read</span>
 	</div>
@@ -14,7 +35,6 @@
 {% endfor %}
 <script type="text/javascript">
 var key,percent,oldp,timer,savedp=0;
-$('input#searchbox').quicksearch('div#linkslist article');
 $('a.read').colorbox({width:"90%", height:"90%", iframe:true, speed: 200,
 onComplete:function(){
  	timer = setTimeout("saveProgress()",3000);
@@ -38,5 +58,17 @@ function childScrollHandler(k,p,o){
 	oldp = o;
 }
 
+$('input#searchbox').quicksearch('div#linkslist article');
 $('a.edit').colorbox({width:"400px", height:"300px", iframe:true, speed: 200});
+
+
+$("ul.sortlink>li>button").click(function(){
+	$("ul.sortlink>li>button").removeClass('active');
+	$(this).addClass('active');
+	var sortelement = $(this).attr('rel');
+	var sortorder = 'desc';
+	if($(this).hasClass('arrowup'))sortorder = 'asc';
+	
+	$('div#linkslist article').tsort('.'+sortelement,{order:sortorder});
+});
 </script>

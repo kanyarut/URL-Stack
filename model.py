@@ -6,7 +6,7 @@ class Category(db.Model):
     name = db.StringProperty(multiline=False)
 
 class Weblink(search.SearchableModel):
-    unsearchable_properties = ['account', 'category', 'content','since','read', 'rating','hit','read']
+    unsearchable_properties = ['account', 'category', 'content','since','read', 'rating','hit','read','readlater']
     account = db.UserProperty()
     category = db.StringProperty(multiline=False)
     url = db.StringProperty()
@@ -19,3 +19,4 @@ class Weblink(search.SearchableModel):
     rating = db.IntegerProperty()
     hit = db.IntegerProperty(default=0)
     read = db.IntegerProperty(default=0)
+    readlater = db.IntegerProperty(default=0)

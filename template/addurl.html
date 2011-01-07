@@ -46,6 +46,17 @@ input.button:hover{
 }
 small{
 	font-size: .7em;
+	clear: both;
+	display: block;
+	text-align: right;
+}
+label.checkbox{
+	float: left;
+	width: auto;
+	font-weight: normal;
+}
+input.checkbox{
+	width: auto;
 }
 </style>
 </head>
@@ -68,7 +79,12 @@ small{
     	<input type="text" id="tags" name="tags" value="" />
     </div>
     <div>
-    <small>Account: {{ user.nickname }}</small><input type="submit" value="add" class="button"></div>
+    <label class="checkbox"><input type="checkbox" name="readlater" value="1" class="checkbox" /> Read Later</label>
+    <input type="submit" value="add" class="button">
+    </div>
+    <div>
+    <small>Account: {{ user.nickname }}</small>
+    </div>
 </form>
 </body>
 </html>
