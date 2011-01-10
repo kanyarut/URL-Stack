@@ -5,6 +5,7 @@ import hn
 
 class Parse():
     error = 0
+    html = ''
 	
     def __init__(self,url):
         self.url = url
@@ -12,14 +13,15 @@ class Parse():
             result = urlfetch.fetch(url)
             if result.status_code == 200:
                 self.html = result.content
-                self.soup = BeautifulSoup(self.html)
                 
         except:
             self.error = 1
 
     def getTitle(self):
-        title = self.soup.findAll('title')
-        return title[0].string
+        soup = BeautifulSoup(self.html)
+        title = soup.findAll('title')
+        if(title):
+            return title[0].string
         
     def getContent(self):
         return hn.grabContent(self.url,self.html).decode('ascii','ignore')
@@ -34,5 +36,5 @@ class Parse():
             if tag.name.lower() in rmlist:
                 tag.extract()
  
-        return ''.join(self.soup.getText())
+        return ''.join(soup.getText())
         

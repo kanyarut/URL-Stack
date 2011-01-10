@@ -168,6 +168,7 @@ class Visit(webapp.RequestHandler):
             
             if(results[0].hit == None):
                 results[0].hit = 0
+            
             results[0].hit = results[0].hit+1
             results[0].save()
             

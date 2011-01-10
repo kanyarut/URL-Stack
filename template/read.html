@@ -1,28 +1,20 @@
-<html>
-<head>
+<!doctype html> 
+<html lang="en-us"> 
+<head> 
+<meta charset="utf-8"> 
 <link rel="stylesheet" href="/dir/css/style.css" type="text/css" media="screen" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript">
+var key = "{{ key }}";
+var read = parseInt("{{ read }}");
+</script>
+<script src="/dir/js/read.js" type="text/javascript"></script>
 </head>
 <body>
-<p><span class="showhit counter">{{ hit }} hit</span> <span class="showread counter">{{ read }}% read</span></p>
+<p><a href='/weblink/visit?k={{ key }}' target="_parent"><span class="showhit counter">{{ hit }} hit</span></a> <span id="gotoread" class="showread counter">{{ read }}% read</span></p>
 <h1><a href='/weblink/visit?k={{ key }}' class="external" target="_parent">{{ title }}</a></h1>
 
 <div class="readcontent">{{ content }}</div>
-<script type="text/javascript">
 
-$(document).ready(function(){
-	if($(document).height() <= $(window).height()){
-		parent.childScrollHandler('{{ key }}',100,{{ read }}); 
-	}else{
-		parent.childScrollHandler('{{ key }}',1,{{ read }}); 
-		$(document).bind('scroll', function(ev){ 
-			var bottom = $(window).height() + $(window).scrollTop(); 
-			var height = $(document).height();
-			var percentage = Math.round(100*bottom/height); 
-			parent.childScrollHandler('{{ key }}',percentage,{{ read }}); 
-		});
-	}
-});
-</script>
 </body>
 </html>
