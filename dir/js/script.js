@@ -1,5 +1,9 @@
 // when html loaded
 $(document).ready(function() {
+	$(window).resize(function() {
+	  $.colorbox.resize({width:"90%", height:"90%"});
+	});
+	
 	$.ajax({
 	  url: '/category',
 	  success: function(data) {
@@ -74,6 +78,8 @@ $(document).ready(function() {
 			onClosed:function(){$('#addcategory_wrapper').hide();},
 			inline:true,href:"#addcategory_wrapper",initialWidth:20,initialHeight:20});
 	});
+	
+	$('a.popup').colorbox({width:"95%", height:"95%", iframe:true, speed: 200});
 });
 
 function saveReadingProgress(key,percent,oldp){

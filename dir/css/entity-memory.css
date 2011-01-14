@@ -1,0 +1,171 @@
+body{
+	font: 1em/1.4em Arial,sans-serif;
+	background: #E1E1E1;
+}
+a{ color: #2098FC;text-decoration: none; }
+p{ clear: both; padding: 0 0 10px 0; }
+#container{
+	width: 100%;
+	margin: 5px auto;
+	position: relative;
+	overflow: hidden;
+}
+#desk{
+	clear: both;
+	background: #FFF;
+	overflow: hidden;
+	margin: 0 5px;
+}
+#cards{
+	clear: both;
+	margin: 0 auto;
+	padding: 0 3%;
+}
+#reset{
+	float: right;
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.03, rgb(194,195,196)),
+	    color-stop(0.80, rgb(237,237,237))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(194,195,196) 3%,
+	    rgb(237,237,237) 80%
+	);
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: .9em;
+	padding: 5px 8px;
+	margin:0 10px 10px 10px;
+	cursor: pointer;
+}
+#reset:hover{
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.17, rgb(181,181,181)),
+	    color-stop(0.64, rgb(156,156,156))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(181,181,181) 17%,
+	    rgb(156,156,156) 64%
+	);
+
+	color: #FFF;
+}
+#cards li{
+	width: 11.5%;
+	float: left;
+	margin: 0 1% 15px 1%;
+	
+	text-align: center;
+	display: none;
+	position: relative;
+	border: 1px solid #C1C1C1;
+	cursor: crosshair;
+	
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: -2px 2px 3px #999;
+	-moz-box-shadow: -2px 2px 3px #999;
+	background: #C1C1C1;
+	color: #C1C1C1;
+}
+@media (min-width:1300px) { 
+	#cards li{
+		font-size: 120px;
+		height: 150px;
+		padding: 90px 0 0 0;
+	}
+}
+@media (min-width: 800px) and (max-width:1299px) { 
+	#cards li{
+		font-size: 90px;
+		height: 90px;
+		padding: 60px 0 0 0;
+	}
+}
+@media (min-width: 500px) and (max-width:799px) {
+	#cards li{
+		font-size: 40px;
+		height: 60px;
+		padding: 30px 0 0 0;
+	}
+}
+@media (max-width:499px) {
+	#cards li{
+		font-size: 25px;
+		height: 40px;
+		padding: 20px 0 0 0;
+	}
+}
+
+#cards li.hide{
+	-webkit-transform: rotateY(180deg);
+	-moz-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+	transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+}
+#cards li.show{
+	background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.03, rgb(194,195,196)),
+	    color-stop(0.80, rgb(237,237,237))
+	);
+	background-image: -moz-linear-gradient(
+	    center bottom,
+	    rgb(194,195,196) 3%,
+	    rgb(237,237,237) 80%
+	);
+	text-shadow: 2px 2px 4px #FFF;
+	color: #2182FC;
+	-webkit-box-shadow: 2px 2px 3px #CCC;
+	-moz-box-shadow: 2px 2px 3px #CCC;
+	border-width: 1px;
+	border-color: #EEE #CCC #C1C1C1 #EEE;
+
+	-webkit-transform: rotateY(0deg);
+	-moz-transform: rotateY(0deg);
+	transform: rotateY(0deg);
+	transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+}
+#cards li.gone{
+	background: #FFF;
+	color: #FFF;
+	
+	transition: all .4s ease-in-out;
+	-moz-transition: all .4s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
+	
+	visibility: hidden;
+}
+
+#scoreboard:before{
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	border-width: 0 15px 15px 0;
+	border-style:solid;
+	border-color:#E1E1E1 #E1E1E1 #1765C5;
+	-webkit-box-shadow: -1px 1px 1px rgba(0,0,0,.3);
+}
+
+#scoreboard{
+	padding: 5px;
+	margin: 0 0 10px 0;
+	background: #2182FC;
+	color: #FFF;
+	position: relative;
+}

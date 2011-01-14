@@ -16,6 +16,10 @@ handlers:
 - url: /favicon.ico
   static_files: favicon.ico
   upload: favicon.ico
+  
+- url: /memory
+  static_files: entity-memory.html
+  upload: entity-memory.html
 
 - url: /j
   static_files: dir/js/bookmarklet.js
