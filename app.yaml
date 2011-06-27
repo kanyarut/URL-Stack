@@ -10,6 +10,9 @@ handlers:
 - url: /category.*
   script: category.py
   
+- url: /m.*
+  script: mobile.py
+  
 - url: /dir
   static_dir: dir
   

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-us">
+<head> 
+
+<meta charset="utf-8"> 
+<title>URL Stack</title> 
+
+<link rel="stylesheet" href="/dir/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/dir/css/mobile.css" type="text/css" media="screen" />
+
+</head> 
+<body> 
+<div class="searchbar">
+
+<a href="/m" class="fl_left">&larr; Back</a>
+
+<form method="post" action="/m/search" id="search">
+	<input id="searchbox" name="q" value="{{ q }}" placeholder="Search" class="text" autofocus />
+	<input type="submit" name="submit" value="Search All" class="button" />
+</form>
+</div>
+
+
+<h1><a href='/weblink/visit?k={{ key }}' class="external" target="_parent">{{ title }}</a></h1>
+
+<div class="readcontent">{{ content }}</div>
+
+<p>
+<a href="/m">&larr; Back</a>
+</p>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9844609-10']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body> 
+</html>

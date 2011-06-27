@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en-us">
+<head> 
+
+<meta charset="utf-8"> 
+<title>URL Stack</title> 
+
+<link rel="stylesheet" href="/dir/css/reset.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="/dir/css/mobile.css" type="text/css" media="screen" />
+
+</head> 
+<body> 
+<div class="searchbar">
+<form method="post" action="/m/search" id="search">
+	<input id="searchbox" name="q" value="{{ q }}" placeholder="Search" class="text" autofocus />
+	<input type="submit" name="submit" value="Search All" class="button" />
+</form>
+</div>
+
+
+<div class="articles">
+{% for bean in beans %}
+	<article class="article">
+	<h4><a href="/m/read?k={{ bean.key }}" class="read" />
+	
+	{% if bean.read %}
+	<img src="/dir/img/icon-book.png" alt="Read" />
+	{% else %}
+	<img src="/dir/img/book.png" alt="Read" />
+	{% endif %}
+	
+	{{ bean.title }}</a></h4>
+	<small>Source: {{ bean.url }} | 
+	<date>Added: {{ bean.since }}</date>
+	</small>
+	</article>
+{% endfor %}
+</div><!-- articles -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-9844609-10']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body> 
+</html>
